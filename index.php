@@ -5,6 +5,8 @@ $deposit_address = $wdc->getaccountaddress($ip);
 $deposit_addresses = $wdc->getaddressesbyaccount($ip);
 $balance = $wdc->getbalance($ip, 2);
 $transactions = $wdc->listtransactions($ip);
+
+$messages = $mysqli->query("SELECT * FROM messages ORDER BY id DESC");
 ?>
 <!doctype html>
 <html>
@@ -18,11 +20,11 @@ $transactions = $wdc->listtransactions($ip);
 
 <body>
 
-<div id="chatbox"></div>
+<div id="chatbox"><?php print_r($messages) ?></div>
 
 <div>
 	<form action="javascript:send_message()">
-		<input type="text" name="message" placeholder="Message" autofocus>
+		<input id="message" type="text" name="message" placeholder="Message" autofocus>
 		<input type="submit" value="Post">
 	</form>
 </div>
@@ -37,7 +39,7 @@ $transactions = $wdc->listtransactions($ip);
 	<br>
 	Balance: <?php printf("%.8f", $balance) ?>
 	<br>
-	<form id="withdraw_wdc" action="send.php" method="post" autocomplete="off">
+	<form id="withdraw_wdc" action="send_wdc.php" method="post" autocomplete="off">
 		<input id="withdraw_address" type="text" name="address" placeholder="WDC Address" onkeyup="validate_address(this) "onchange="validate_address(this)">
 		<br>
 		<input id="withdraw_amount" type="text" name="amount" placeholder="Amount">

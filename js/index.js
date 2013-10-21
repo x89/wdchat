@@ -15,3 +15,17 @@ function validate_address(dom) {
 		}
 	});
 }
+
+function send_message() {
+	var message = $('#message').val();
+	$.ajax({
+		url: 'send_message.php',
+		type: 'post',
+		data: {
+			'message': message
+		},
+		success: function(result) {
+			$('#chatbox').append('<p>' + result + '</p>')
+		}
+	});
+}
