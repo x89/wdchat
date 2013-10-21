@@ -3,9 +3,8 @@
  * It's for use with jQuery's AJAX. 
  */
 
-require_once "jsonrpcphp/includes/jsonRPCClient.php";
+require "config.php";
 
-$wdc = new jsonRPCClient("http://naypam:godlike@127.0.0.1:11082/");
 $validation_data = $wdc->validateaddress($_GET["address"]);
 
 if (is_array($validation_data)) {

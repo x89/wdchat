@@ -1,8 +1,6 @@
 <?php
-require_once "jsonrpcphp/includes/jsonRPCClient.php";
+require "config.php";
 
-$wdc = new jsonRPCClient("http://naypam:godlike@127.0.0.1:11082/");
-$ip = $_SERVER['REMOTE_ADDR'];
 $deposit_address = $wdc->getaccountaddress($ip);
 $deposit_addresses = $wdc->getaddressesbyaccount($ip);
 $balance = $wdc->getbalance($ip, 2);

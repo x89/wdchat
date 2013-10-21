@@ -1,8 +1,6 @@
 <?php
-require_once "jsonrpcphp/includes/jsonRPCClient.php";
+require "config.php";
 
-$wdc = new jsonRPCClient("http://naypam:godlike@127.0.0.1:11082/");
-$ip = $_SERVER['REMOTE_ADDR'];
 $address = $_POST["address"];
 $amount = (float) $_POST["amount"];
 
